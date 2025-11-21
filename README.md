@@ -28,7 +28,7 @@ Before running the bot, ensure you have:
 
 ### 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/mohamadbastaniyan/voiceTrimmer
 cd voiceTrimmer
 ```
 
@@ -298,3 +298,4 @@ This bot is provided as-is. Make sure to comply with Telegram's Terms of Service
 ---
 
 **Last Updated**: November 2025
+
