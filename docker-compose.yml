@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  voice-trimmer-bot:
+    build: .
+    container_name: voice-trimmer-bot
+    restart: always
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - MAX_DURATION=60
+      - LOG_LEVEL=INFO
+      - DEBUG=False
+    volumes:
+      - ./logs:/app/logs
+      - /tmp/voice_trimmer:/tmp/voice_trimmer
+    networks:
+      - bot-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "print('healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  bot-network:
+    driver: bridge
