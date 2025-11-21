@@ -1,31 +1,28 @@
 [Unit]
 Description=Voice Trimmer Telegram Bot
-Documentation=https://github.com/your-repo/voiceTrimmer
+Documentation=https://github.com/mohamadbastaniyan/voiceTrimmer
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
-User=ubuntu
-WorkingDirectory=/home/ubuntu/voiceTrimmer
-Environment="PATH=/home/ubuntu/voiceTrimmer/venv/bin"
+User=root
+WorkingDirectory=/root/voiceTrimmer
+Environment="PATH=/root/voiceTrimmer/venv/bin"
 Environment="TELEGRAM_BOT_TOKEN=YOUR_TOKEN_HERE"
 Environment="MAX_DURATION=60"
-Environment="LOG_DIR=/home/ubuntu/voiceTrimmer/logs"
+Environment="LOG_DIR=/root/voiceTrimmer/logs"
 Environment="LOG_LEVEL=INFO"
-ExecStart=/home/ubuntu/voiceTrimmer/venv/bin/python /home/ubuntu/voiceTrimmer/src/bot.py
+ExecStart=/root/voiceTrimmer/venv/bin/python /root/voiceTrimmer/src/bot.py
 Restart=always
 RestartSec=15
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=voice-trimmer-bot
 
-# Security hardening
 NoNewPrivileges=true
 PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=yes
-ReadWritePaths=/home/ubuntu/voiceTrimmer/logs /tmp/voice_trimmer
+ReadWritePaths=/root/voiceTrimmer/logs /tmp/voice_trimmer
 
 [Install]
 WantedBy=multi-user.target
